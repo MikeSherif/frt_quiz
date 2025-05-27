@@ -1,0 +1,178 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/quiz.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="quiz__wrapper">
+      <h1 class="quiz__title">Раздел 1. Стандартный блок вопросов</h1>
+      <form action="" class="quiz__form">
+        <ul class="quiz__list">
+          <li class="quiz__list-el">
+            <p class="quiz__list-el-header">1. Выберите руководителя прямого подчинения генеральному директору для согласования технического задания</p>
+            <div class="quiz__list-el-body">
+              <div class="select">
+                <div class="select__header">
+                  <span class="select__current">Руководитель 1</span>
+                  <div class="select__icon">
+                    <img src="img/select-icon.svg" alt="Стрелка выпадающего списка">
+                  </div>
+                </div>
+
+                <div class="select__body">
+                  <ul class="select__item-list">
+                    <li class="select__item" data-id="">Руководитель 1</li>
+                    <li class="select__item" data-id="">Руководитель 2</li>
+                    <li class="select__item" data-id="">Руководитель 3</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="quiz__list-el-body-comment">
+                Комментарий не для публикации - После заполнения
+                всех полей технического задания заполненное техническое
+                задание должно автоматически уходить на согласование
+                руководителю прямого подчинения ГД и после согласования с ним
+                – поступать руководителю подразделения «Развитие и законопроектная
+                деятельность» (далее - РиЗД) на рассмотрение (+ уведомление на почту
+                руководителю прямого подчинения ГД и руководителю прямого подчинения
+                ГД, курирующему РиЗД)
+              </p>
+            </div>
+          </li>
+          <li class="quiz__list-el">
+            <p class="quiz__list-el-header">2. Выберите самостоятельное структурное подразделение Фонда – заказчика разработки проекта НПА (далее – Заказчик)</p>
+            <div class="quiz__list-el-body">
+              <div class="select">
+                <div class="select__header">
+                  <span class="select__current">Подразделение 1</span>
+                  <div class="select__icon">
+                    <img src="img/select-icon.svg" alt="Стрелка выпадающего списка">
+                  </div>
+                </div>
+
+                <div class="select__body">
+                  <ul class="select__item-list">
+                    <li class="select__item" data-id="">Подразделение 1</li>
+                    <li class="select__item" data-id="">Подразделение 2</li>
+                    <li class="select__item" data-id="">Подразделение 3</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="quiz__list-el-body-comment">
+              </p>
+            </div>
+          </li>
+          <li class="quiz__list-el">
+            <p class="quiz__list-el-header">2. Укажите ответственного исполнителя Заказчика для взаимодействия при разработке проекта НПА</p>
+            <div class="quiz__list-el-body">
+              <div class="select">
+                <div class="select__header">
+                  <span class="select__current">Сотрудник 1</span>
+                  <div class="select__icon">
+                    <img src="img/select-icon.svg" alt="Стрелка выпадающего списка">
+                  </div>
+                </div>
+
+                <div class="select__body">
+                  <ul class="select__item-list">
+                    <li class="select__item" data-id="">Сотрудник 1</li>
+                    <li class="select__item" data-id="">Сотрудник 2</li>
+                    <li class="select__item" data-id="">Сотрудник 3</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="quiz__list-el-body-comment">
+                Комментарий не для публикации - ответственный исполнитель
+                Заказчика должен получать уведомления (на сайте или
+                посредством электронной почты) обо всех изменениях в процессе
+                рассмотрения его технического задания (направление технического
+                задания на рассмотрение в РиЗД – принятие/отказ в принятии технического
+                задания к рассмотрению – разработка проекта НПА на основании технического
+                задания – окончание процесса).
+              </p>
+            </div>
+          </li>
+        </ul>
+        <input type="submit" class="quiz__list-submit">
+      </form>
+    </div>
+
+    <div class="quiz__wrapper">
+      <h1 class="quiz__title">Раздел 2. Вопросы по проекту НПА</h1>
+      <form action="" class="quiz__form">
+        <ul class="quiz__list">
+          <li class="quiz__list-el">
+            <p class="quiz__list-el-header">1. Какой акт необходимо принять?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="concentration" value="law" id="law" />
+                  <label for="law">а) Закон</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="concentration" value="decree" id="decree" />
+                  <label for="decree">б) Постановление Правительства РФ</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="concentration" value="order" id="order" />
+                  <label for="order">в) Распоряжение Правительства РФ</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="concentration" value="command" id="command" />
+                  <label for="command">г) Приказ ФОИВ</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="concentration" value="act" id="act" />
+                  <label for="act">д) Модельный региональный акт</label>
+                </div>
+              </fieldset>
+            </div>
+          </li>
+          <li class="quiz__list-el">
+            <p class="quiz__list-el-header">2. Укажите цель разработки (внесения изменений) в НПА (опишите проблему, на решение которой направлена разработка НПА)</p>
+            <div class="quiz__list-el-body">
+              <textarea class="quiz__list-el-body-textarea" name="textarea"></textarea>
+            </div>
+          </li>
+          <li class="quiz__list-el">
+            <p class="quiz__list-el-header">3. Укажите, как именно действующее
+              правовое регулирование (либо отсутствие такого регулирования)
+              мешает реализации функций и полномочий Фонда</p>
+            <div class="quiz__list-el-body">
+              <textarea class="quiz__list-el-body-textarea" name="textarea"></textarea>
+            </div>
+          </li>
+        </ul>
+        <input type="submit" class="quiz__list-submit">
+      </form>
+    </div>
+  </div>
+  <script src="js/quiz.js"></script>
+
+</body>
+
+</html>

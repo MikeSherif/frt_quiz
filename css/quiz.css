@@ -1,0 +1,566 @@
+/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .visually-hidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * The use of `table` rather than `block` is only necessary if using
+ * `::before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+select, option, p, span, button, h1, h2, h3, h4, h5, h6, blockquote, pre, input, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+  accent-color: #5282ff;
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  width: 100%;
+}
+
+.quiz__wrapper {
+  max-width: 710px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.quiz__title {
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 44px;
+}
+
+.quiz__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 64px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 24px;
+}
+
+.quiz__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 0;
+}
+
+.quiz__list-el {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+  list-style: none;
+}
+
+.quiz__list-el::before {
+  content: "*";
+  position: absolute;
+  color: red;
+  top: 0;
+  left: 0;
+}
+
+.quiz__list-el-header {
+  color: rgba(0,0,0,.85);
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 15px;
+  line-height: 20px;
+}
+
+.quiz__list-el-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.quiz__list-el-body-comment {
+  font-size: 13px;
+  font-weight: 400;
+  text-align: justify;
+  color: rgba(0,0,0,.5);
+}
+
+.quiz__list-submit {
+  margin-top: 32px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 36px;
+  color: #fff;
+  background: #5282ff;
+  border-radius: 10px;
+  transition: 0.1s ease-in-out all;
+}
+
+.quiz__list-submit:hover {
+  background: #4e79eb;
+  transition: 0.1s ease-in-out all;
+}
+
+/*2 раздел*/
+.quiz__fieldset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.quiz__fieldset-item {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 12px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out all;
+}
+.quiz__fieldset-item:has(input[type="radio"]:checked) {
+  border-color: #5282ff;
+  transition: 0.1s ease-in-out all;
+}
+
+.quiz__fieldset-item label {
+  width: 100%;
+  line-height: 46px;
+  cursor: pointer;
+}
+
+.quiz__list-el-body-textarea {
+  width: 100%;
+  height: 140px;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 10px;
+}
+
+
+/*SELECT*/
+.select {
+  font-family: "Montserrat", Montserrat, sans-serif;
+  position: relative;
+  max-width: 360px;
+  width: 100%;
+}
+
+.select.is-active .select__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 189px;
+  height: fit-content;
+  align-items: flex-start;
+  padding-bottom: 5px;
+  /*scrollbar-color: #2B3888 transparent;
+  scrollbar-shadow-color: #222222;*/
+}
+
+
+.select.is-chosen .select__header,  .select.is-chosen .select__current {
+
+}
+
+.select.is-chosen .select__icon {
+  fill: #fff;
+}
+
+.select.is-active .select__icon {
+  transform: rotate(180deg); /* ������� �� 180 �������� */
+  transform-origin: center center;
+}
+
+.select__header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  gap: 15px;
+  width: 100%;
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 10px;
+}
+
+.select__current {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: start;
+  padding-left: 10px;
+  width: 340px;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -1px;
+  color: rgba(0,0,0,.85);
+  border-radius: 10px;
+  /*border: 1px solid rgb(173, 173, 173);
+  border-radius: 20px;
+  ;*/
+}
+
+.select__icon {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  margin-right: 15px;
+}
+
+.select__icon img {
+  height: 20px;
+  width: 20px;
+}
+
+.select__body {
+  background: #ffffff;
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 10px;
+  display: none;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 45px;
+  flex-direction: column;
+}
+
+.select__body-search {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border:none;
+  border-bottom: 1px solid rgb(173, 173, 173);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+
+}
+
+.select__body-search-input {
+  border: none;
+  margin-left: -30px;
+}
+
+.select__item-list {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  padding: 5px 0;
+  position: relative;
+  max-height: 171px;
+  height: fit-content;
+  width: 75%;
+  margin-left: 15px;
+  overflow: auto;
+}
+
+/* ������ ���������� */
+.select__item-list::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* ��� ���������� (����) */
+.select__item-list::-webkit-scrollbar-track {
+  background: transparent;
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 10px;
+  background-clip: padding-box;
+  padding: 1px;
+}
+
+/* �������� */
+.select__item-list::-webkit-scrollbar-thumb {
+  background: #2B3888;
+  padding: 1px
+}
+
+.select__item {
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(0,0,0,.85);
+}
+
+.select__item:hover {
+  background-color: #f2f2f2;
+}
