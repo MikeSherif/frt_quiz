@@ -37,31 +37,21 @@ select();
 //скрипт для квиза
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM loaded, initializing quiz functionality');
 
   // Управление подвопросами
   document.querySelectorAll('input[type="radio"][data-subquestion]').forEach(radio => {
     radio.addEventListener('change', () => {
-      console.log(`Radio changed: ${radio.id}, value: ${radio.value}, subquestion: ${radio.getAttribute('data-subquestion')}`);
-
       const parentFieldset = radio.closest('.quiz__fieldset').closest('.quiz__list-el-body');
       if (!parentFieldset) {
-        console.error('Parent fieldset not found for radio:', radio.id);
         return;
       }
 
-      // Скрываем все подвопросы в текущем fieldset
+      // Скрываем все подвопросы в текущем fieldset, но не трогаем превью файлов
       parentFieldset.querySelectorAll('.quiz__subquestions').forEach(sub => {
-        console.log(`Hiding subquestion: ${sub.getAttribute('data-subquestion-id')}`);
         sub.style.display = 'none';
         sub.querySelectorAll('input, textarea').forEach(field => {
           field.disabled = true;
         });
-        const preview = sub.querySelector('.file-upload-preview');
-        if (preview) {
-          console.log(`Clearing file preview for: ${preview.id}`);
-          preview.innerHTML = '';
-        }
       });
 
       // Показываем нужный подвопрос
@@ -70,14 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
         parentFieldset.querySelectorAll('.quiz__subquestions').forEach(sub => {
           const subquestionIds = sub.getAttribute('data-subquestion-id').split(' ');
           if (subquestionIds.includes(subquestionId)) {
-            console.log(`Showing subquestion: ${sub.getAttribute('data-subquestion-id')}`);
             sub.style.display = 'flex';
             sub.querySelectorAll('input, textarea').forEach(field => {
               field.disabled = false;
             });
             const fileInput = sub.querySelector('input[type="file"]');
             if (fileInput) {
-              console.log(`Initializing file upload for: ${fileInput.id}`);
               initFileUpload(fileInput, sub);
             }
           }
@@ -90,11 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('input[type="date"]').forEach(dateInput => {
     dateInput.addEventListener('input', function () {
       const value = this.value;
-      console.log(`Date input changed: ${value}`);
       if (value) {
         const [year, month, day] = value.split('-');
         if (year.length > 4) {
-          console.log(`Year too long (${year}), trimming to 4 digits`);
           this.value = year.slice(0, 4) + (month ? '-' + month : '') + (day ? '-' + day : '');
         }
       }
@@ -102,11 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     dateInput.addEventListener('blur', function () {
       const value = this.value;
-      console.log(`Date input blur: ${value}`);
       if (value) {
         const [year] = value.split('-');
         if (year.length !== 4 || isNaN(year) || year < 1900 || year > 9999) {
-          console.warn(`Invalid year: ${year}`);
           alert('Введите корректный год (4 цифры, 1900–9999).');
           this.value = '';
         }
@@ -117,21 +101,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Инициализация загрузки файлов
   function initFileUpload(fileInput, sub) {
     const previewDiv = sub.querySelector('.file-upload-preview');
-    console.log(`Setting up file input: ${fileInput.id}`);
+    // Проверяем, инициализирован ли уже обработчик, чтобы избежать повторного добавления
+    if (fileInput.dataset.listenerAdded) return;
+    fileInput.dataset.listenerAdded = 'true';
 
     fileInput.addEventListener('change', (e) => {
       const files = Array.from(e.target.files);
-      console.log(`Files selected: ${files.length} for input: ${fileInput.id}`);
+      // Очищаем существующие плашки перед добавлением новых
+      previewDiv.innerHTML = '';
 
       if (files.length > 20) {
-        console.warn(`Too many files selected: ${files.length}`);
         alert('Максимум 20 файлов.');
         fileInput.value = '';
         return;
       }
 
       files.forEach(file => {
-        console.log(`Processing file: ${file.name}, size: ${file.size} bytes`);
         if (file.size > 20 * 1024 * 1024) {
           console.warn(`File too large: ${file.name}, size: ${file.size} bytes`);
           alert(`Файл "${file.name}" превышает 20 МБ.`);
@@ -148,19 +133,17 @@ document.addEventListener('DOMContentLoaded', () => {
     fileItem.className = 'file-item';
     const fileUrl = URL.createObjectURL(file);
     fileItem.innerHTML = `
-            <span style="display: flex; width: 100%;">
-              <div class="file-item-wrapper">
-                <img src="img/attach_file.svg" alt="Иконка прикрепления файла">
-                <a href="${fileUrl}" target="_blank">${file.name}</a>
-              </div>
-              <button class="remove-file" data-file-name="${file.name}">×</button>
-            </span>
-        `;
+      <span style="display: flex; width: 100%;">
+        <div class="file-item-wrapper">
+          <img src="img/attach_file.svg" alt="Иконка прикрепления файла">
+          <a href="${fileUrl}" target="_blank">${file.name}</a>
+        </div>
+        <button class="remove-file" data-file-name="${file.name}">×</button>
+      </span>
+    `;
     previewDiv.appendChild(fileItem);
-    console.log(`Added file preview: ${file.name}`);
 
     fileItem.querySelector('.remove-file').addEventListener('click', () => {
-      console.log(`Removing file: ${file.name}`);
       fileItem.remove();
       const dataTransfer = new DataTransfer();
       Array.from(fileInput.files).forEach(f => {
@@ -169,13 +152,125 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       fileInput.files = dataTransfer.files;
-      console.log(`Updated file list, remaining files: ${fileInput.files.length}`);
     });
   }
 
   // Триггер начального состояния
   document.querySelectorAll('input[type="radio"][data-subquestion]:checked').forEach(radio => {
-    console.log(`Triggering initial state for pre-selected radio: ${radio.id}`);
     radio.dispatchEvent(new Event('change'));
+  });
+
+  // Функция для сбора данных из активных полей
+  function collectFormData() {
+    const formData = new FormData();
+    const activeFields = document.querySelectorAll('.quiz__list-el-body input:not([disabled]), .quiz__list-el-body textarea:not([disabled]), .quiz__list-el-body select:not([disabled])');
+
+    activeFields.forEach(field => {
+      if (field.type === 'file') {
+        Array.from(field.files).forEach(file => {
+          formData.append(field.name, file);
+        });
+      } else if (field.type === 'radio') {
+        if (field.checked) {
+          formData.append(field.name, field.value);
+        }
+      } else {
+        formData.append(field.name, field.value);
+      }
+    });
+
+    console.log('Собраны данные формы');
+    return formData;
+  }
+
+  // Функция для валидации обязательных полей
+  function validateForm() {
+    let isValid = true;
+
+    // Удаляем все старые сообщения об ошибках
+    document.querySelectorAll('.error-message').forEach(error => error.remove());
+
+    // Проверяем радио-кнопки
+    document.querySelectorAll('.quiz__fieldset').forEach(fieldset => {
+      const radios = fieldset.querySelectorAll('input[type="radio"]:not([disabled])');
+      if (radios.length > 0) {
+        const checked = Array.from(radios).some(radio => radio.checked);
+        if (!checked) {
+          isValid = false;
+          const questionEl = fieldset.closest('.quiz__list-el');
+          const errorMessage = document.createElement('p');
+          errorMessage.className = 'error-message';
+          errorMessage.style.color = 'red';
+          errorMessage.textContent = 'Пожалуйста, выберите вариант.';
+          questionEl.appendChild(errorMessage);
+          radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+              questionEl.removeChild(errorMessage);
+            })
+          })
+        }
+      }
+    });
+
+    // Проверяем текстовые поля и даты
+    document.querySelectorAll('.quiz__list-el-body textarea:not([disabled]), .quiz__list-el-body input[type="text"]:not([disabled]), .quiz__list-el-body input[type="date"]:not([disabled])').forEach(field => {
+      if (!field.value.trim()) {
+        isValid = false;
+        const questionEl = field.closest('.quiz__list-el');
+        const errorMessage = document.createElement('p');
+        errorMessage.className = 'error-message';
+        errorMessage.style.color = 'red';
+        errorMessage.textContent = 'Пожалуйста, заполните это поле.';
+        questionEl.appendChild(errorMessage);
+        field.addEventListener('input', ()=> {
+          questionEl.removeChild(errorMessage);
+        })
+      }
+    });
+
+    // Проверяем поля загрузки файлов
+    document.querySelectorAll('.quiz__list-el-body input[type="file"]:not([disabled])').forEach(fileInput => {
+      if (fileInput.files.length === 0) {
+        isValid = false;
+        const questionEl = fileInput.closest('.quiz__list-el');
+        const errorMessage = document.createElement('p');
+        errorMessage.className = 'error-message';
+        errorMessage.style.color = 'red';
+        errorMessage.textContent = 'Пожалуйста, загрузите файл.';
+        questionEl.appendChild(errorMessage);
+      }
+    });
+
+    return isValid;
+  }
+  // Обработка отправки формы по клику на кнопку
+  document.querySelector('.quiz__list-submit-button').addEventListener('click', (e) => {
+    e.preventDefault(); // Предотвращаем стандартное поведение кнопки
+    console.log('Нажата кнопка отправки');
+
+    if (validateForm()) {
+      const formData = collectFormData();
+      console.log('Валидация пройдена');
+      formData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+      });
+      // fetch('/lol', {
+      //   method: 'POST',
+      //   body: formData,
+      // })
+      //   .then(response => {
+      //     if (!response.ok) throw new Error('Ошибка сервера');
+      //     return response.json();
+      //   })
+      //   .then(data => {
+      //     console.log(data);
+      //   })
+      //   .catch(error => {
+      //     console.error('Ошибка:', error);
+      //
+      //   });
+    } else {
+      console.log('Валидация не пройдена');
+    }
   });
 });
