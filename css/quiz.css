@@ -446,6 +446,7 @@ ul.quiz__list-el-comment {
 }
 
 .quiz__subquestions {
+  display: none;
   margin-top: 20px;
 }
 

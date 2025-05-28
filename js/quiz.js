@@ -34,37 +34,81 @@ let select = function () {
 
 
 select();
+//скрипт для квиза
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Управление отображением подвопросов для радио-кнопок
+  console.log('DOM loaded, initializing quiz functionality');
+
+  // Управление подвопросами
   document.querySelectorAll('input[type="radio"][data-subquestion]').forEach(radio => {
     radio.addEventListener('change', () => {
-      const parentFieldset = radio.closest('.quiz__fieldset');
-      if (parentFieldset) {
-        // Скрываем все подвопросы и отключаем их поля
-        parentFieldset.querySelectorAll('.quiz__subquestions').forEach(sub => {
-          sub.style.display = 'none';
-          sub.querySelectorAll('input, textarea').forEach(field => {
-            field.disabled = true;
-          });
-          // Очищаем превью файлов
-          const preview = sub.querySelector('.file-upload-preview');
-          if (preview) preview.innerHTML = '';
-        });
+      console.log(`Radio changed: ${radio.id}, value: ${radio.value}, subquestion: ${radio.getAttribute('data-subquestion')}`);
 
-        // Показываем нужный подвопрос и включаем поля, если выбрано
-        if (radio.checked) {
-          const subquestionId = radio.getAttribute('data-subquestion');
-          const subquestions = document.querySelectorAll(`.quiz__subquestions[data-subquestion-id="${subquestionId}"]`);
-          subquestions.forEach(sub => {
+      const parentFieldset = radio.closest('.quiz__fieldset').closest('.quiz__list-el-body');
+      if (!parentFieldset) {
+        console.error('Parent fieldset not found for radio:', radio.id);
+        return;
+      }
+
+      // Скрываем все подвопросы в текущем fieldset
+      parentFieldset.querySelectorAll('.quiz__subquestions').forEach(sub => {
+        console.log(`Hiding subquestion: ${sub.getAttribute('data-subquestion-id')}`);
+        sub.style.display = 'none';
+        sub.querySelectorAll('input, textarea').forEach(field => {
+          field.disabled = true;
+        });
+        const preview = sub.querySelector('.file-upload-preview');
+        if (preview) {
+          console.log(`Clearing file preview for: ${preview.id}`);
+          preview.innerHTML = '';
+        }
+      });
+
+      // Показываем нужный подвопрос
+      if (radio.checked) {
+        const subquestionId = radio.getAttribute('data-subquestion');
+        parentFieldset.querySelectorAll('.quiz__subquestions').forEach(sub => {
+          const subquestionIds = sub.getAttribute('data-subquestion-id').split(' ');
+          if (subquestionIds.includes(subquestionId)) {
+            console.log(`Showing subquestion: ${sub.getAttribute('data-subquestion-id')}`);
             sub.style.display = 'flex';
             sub.querySelectorAll('input, textarea').forEach(field => {
               field.disabled = false;
             });
-            // Инициализируем обработчик для input file
             const fileInput = sub.querySelector('input[type="file"]');
-            if (fileInput) initFileUpload(fileInput, sub);
-          });
+            if (fileInput) {
+              console.log(`Initializing file upload for: ${fileInput.id}`);
+              initFileUpload(fileInput, sub);
+            }
+          }
+        });
+      }
+    });
+  });
+
+  // Ограничение года в input[type="date"]
+  document.querySelectorAll('input[type="date"]').forEach(dateInput => {
+    dateInput.addEventListener('input', function () {
+      const value = this.value;
+      console.log(`Date input changed: ${value}`);
+      if (value) {
+        const [year, month, day] = value.split('-');
+        if (year.length > 4) {
+          console.log(`Year too long (${year}), trimming to 4 digits`);
+          this.value = year.slice(0, 4) + (month ? '-' + month : '') + (day ? '-' + day : '');
+        }
+      }
+    });
+
+    dateInput.addEventListener('blur', function () {
+      const value = this.value;
+      console.log(`Date input blur: ${value}`);
+      if (value) {
+        const [year] = value.split('-');
+        if (year.length !== 4 || isNaN(year) || year < 1900 || year > 9999) {
+          console.warn(`Invalid year: ${year}`);
+          alert('Введите корректный год (4 цифры, 1900–9999).');
+          this.value = '';
         }
       }
     });
@@ -73,42 +117,60 @@ document.addEventListener('DOMContentLoaded', () => {
   // Инициализация загрузки файлов
   function initFileUpload(fileInput, sub) {
     const previewDiv = sub.querySelector('.file-upload-preview');
+    console.log(`Setting up file input: ${fileInput.id}`);
+
     fileInput.addEventListener('change', (e) => {
       const files = Array.from(e.target.files);
+      console.log(`Files selected: ${files.length} for input: ${fileInput.id}`);
+
       if (files.length > 20) {
+        console.warn(`Too many files selected: ${files.length}`);
         alert('Максимум 20 файлов.');
         fileInput.value = '';
         return;
       }
+
       files.forEach(file => {
+        console.log(`Processing file: ${file.name}, size: ${file.size} bytes`);
         if (file.size > 20 * 1024 * 1024) {
-          alert('Максимальный размер файла — 20 МБ.');
+          console.warn(`File too large: ${file.name}, size: ${file.size} bytes`);
+          alert(`Файл "${file.name}" превышает 20 МБ.`);
           return;
         }
-        addFilePreview(file, previewDiv);
+        addFilePreview(file, previewDiv, fileInput);
       });
     });
   }
 
   // Добавление плашки файла
-  function addFilePreview(file, previewDiv) {
+  function addFilePreview(file, previewDiv, fileInput) {
     const fileItem = document.createElement('div');
     fileItem.className = 'file-item';
+    const fileUrl = URL.createObjectURL(file);
     fileItem.innerHTML = `
-            <a href="${URL.createObjectURL(file)}" target="_blank">${file.name}</a>
+            <a href="${fileUrl}" target="_blank">${file.name}</a>
             <span class="remove-file" data-file-name="${file.name}">×</span>
         `;
     previewDiv.appendChild(fileItem);
+    console.log(`Added file preview: ${file.name}`);
 
-    // Удаление файла
     fileItem.querySelector('.remove-file').addEventListener('click', () => {
+      console.log(`Removing file: ${file.name}`);
       fileItem.remove();
-      const fileInput = previewDiv.previousElementSibling.querySelector('input[type="file"]');
       const dataTransfer = new DataTransfer();
       Array.from(fileInput.files).forEach(f => {
-        if (f.name !== file.name) dataTransfer.items.add(f);
+        if (f.name !== file.name) {
+          dataTransfer.items.add(f);
+        }
       });
       fileInput.files = dataTransfer.files;
+      console.log(`Updated file list, remaining files: ${fileInput.files.length}`);
     });
   }
+
+  // Триггер начального состояния
+  document.querySelectorAll('input[type="radio"][data-subquestion]:checked').forEach(radio => {
+    console.log(`Triggering initial state for pre-selected radio: ${radio.id}`);
+    radio.dispatchEvent(new Event('change'));
+  });
 });
