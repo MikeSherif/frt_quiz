@@ -479,6 +479,50 @@ ul.quiz__list-el-comment {
   color: rgba(0,0,0,.3);
 }
 
+.file-upload-preview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 100%;
+}
+
+.file-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  max-width: 260px;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.file-item-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+}
+
+.file-item a {
+  display: block;
+  width: 80%;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  text-decoration: none;
+  color: rgba(0,0,0,.6);
+}
+
+.remove-file {
+  cursor: pointer;
+  font-size: 24px;
+}
+
 
 /*SELECT*/
 .select {

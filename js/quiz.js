@@ -148,8 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fileItem.className = 'file-item';
     const fileUrl = URL.createObjectURL(file);
     fileItem.innerHTML = `
-            <a href="${fileUrl}" target="_blank">${file.name}</a>
-            <span class="remove-file" data-file-name="${file.name}">×</span>
+            <span style="display: flex; width: 100%;">
+              <div class="file-item-wrapper">
+                <img src="img/attach_file.svg" alt="Иконка прикрепления файла">
+                <a href="${fileUrl}" target="_blank">${file.name}</a>
+              </div>
+              <button class="remove-file" data-file-name="${file.name}">×</button>
+            </span>
         `;
     previewDiv.appendChild(fileItem);
     console.log(`Added file preview: ${file.name}`);
