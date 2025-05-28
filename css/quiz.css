@@ -254,6 +254,8 @@ select, option, p, span, button, h1, h2, h3, h4, h5, h6, blockquote, pre, input,
 
 ul, li {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 input[type=radio] {
@@ -261,6 +263,24 @@ input[type=radio] {
   height: 20px;
   accent-color: #5282ff;
   cursor: pointer;
+}
+
+input[type=date] {
+  width: 210px;
+  padding: 10px;
+  color: rgba(0,0,0,.6);
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+input[type=text] {
+  font-size: 13px;
+  color: rgba(0,0,0,.6);
+  max-width: 100%;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 8px;
+  padding: 15px;
 }
 
 button {
@@ -336,6 +356,14 @@ body {
   padding-left: 15px;
   line-height: 20px;
 }
+ul.quiz__list-el-header  {
+  margin-left: 30px;
+}
+
+.quiz__list-el-header li {
+  list-style: decimal;
+  padding-bottom: 10px;
+}
 
 .quiz__list-el-body {
   display: flex;
@@ -343,11 +371,19 @@ body {
   gap: 5px;
 }
 
-.quiz__list-el-body-comment {
+.quiz__list-el-comment {
   font-size: 13px;
   font-weight: 400;
   text-align: justify;
   color: rgba(0,0,0,.5);
+}
+
+ul.quiz__list-el-comment {
+  padding-left: 30px;
+}
+
+.quiz__list-el-comment-li {
+  list-style: disc;
 }
 
 .quiz__list-submit {
@@ -378,13 +414,13 @@ body {
 }
 
 .quiz__fieldset-item {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  height: 46px;
-  padding: 0 12px;
+  /*height: 46px;*/
+  padding: 12px;
   border: 1px solid rgba(0,0,0,.1);
   border-radius: 8px;
   cursor: pointer;
@@ -397,16 +433,49 @@ body {
 
 .quiz__fieldset-item label {
   width: 100%;
-  line-height: 46px;
+  /*line-height: 46px;*/
   cursor: pointer;
 }
 
 .quiz__list-el-body-textarea {
-  width: 100%;
+  max-width: 100%;
   height: 140px;
   padding: 10px;
   border: 1px solid rgba(0,0,0,.1);
   border-radius: 10px;
+}
+
+.quiz__subquestions {
+  margin-top: 20px;
+}
+
+.quiz__list-el-body-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.quiz__list-el-body-input-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 36px;
+  width: 118px;
+  font-size: 13px;
+  color: rgba(0,0,0,.85);
+  font-weight: 500;
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 10px;
+}
+
+.quiz__list-el-body-input-description {
+  font-size: 13px;
+  color: rgba(0,0,0,.3);
 }
 
 

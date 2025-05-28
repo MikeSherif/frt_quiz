@@ -51,16 +51,6 @@
                   </ul>
                 </div>
               </div>
-              <p class="quiz__list-el-body-comment">
-                Комментарий не для публикации - После заполнения
-                всех полей технического задания заполненное техническое
-                задание должно автоматически уходить на согласование
-                руководителю прямого подчинения ГД и после согласования с ним
-                – поступать руководителю подразделения «Развитие и законопроектная
-                деятельность» (далее - РиЗД) на рассмотрение (+ уведомление на почту
-                руководителю прямого подчинения ГД и руководителю прямого подчинения
-                ГД, курирующему РиЗД)
-              </p>
             </div>
           </li>
           <li class="quiz__list-el">
@@ -105,15 +95,6 @@
                   </ul>
                 </div>
               </div>
-              <p class="quiz__list-el-body-comment">
-                Комментарий не для публикации - ответственный исполнитель
-                Заказчика должен получать уведомления (на сайте или
-                посредством электронной почты) обо всех изменениях в процессе
-                рассмотрения его технического задания (направление технического
-                задания на рассмотрение в РиЗД – принятие/отказ в принятии технического
-                задания к рассмотрению – разработка проекта НПА на основании технического
-                задания – окончание процесса).
-              </p>
             </div>
           </li>
         </ul>
@@ -125,45 +106,499 @@
       <h1 class="quiz__title">Раздел 2. Вопросы по проекту НПА</h1>
       <form action="" class="quiz__form">
         <ul class="quiz__list">
-          <li class="quiz__list-el">
+          <li class="quiz__list-el" data-question="1">
             <p class="quiz__list-el-header">1. Какой акт необходимо принять?</p>
             <div class="quiz__list-el-body">
               <fieldset class="quiz__fieldset">
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="concentration" value="law" id="law" />
-                  <label for="law">а) Закон</label>
+                  <input type="radio" name="q1_act_type" value="law" id="q1_law" />
+                  <label for="q1_law">а) Закон</label>
                 </div>
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="concentration" value="decree" id="decree" />
-                  <label for="decree">б) Постановление Правительства РФ</label>
+                  <input type="radio" name="q1_act_type" value="decree" id="q1_decree" />
+                  <label for="q1_decree">б) Постановление Правительства РФ</label>
                 </div>
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="concentration" value="order" id="order" />
-                  <label for="order">в) Распоряжение Правительства РФ</label>
+                  <input type="radio" name="q1_act_type" value="order" id="q1_order" />
+                  <label for="q1_order">в) Распоряжение Правительства РФ</label>
                 </div>
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="concentration" value="command" id="command" />
-                  <label for="command">г) Приказ ФОИВ</label>
+                  <input type="radio" name="q1_act_type" value="command" id="q1_command" />
+                  <label for="q1_command">г) Приказ ФОИВ</label>
                 </div>
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="concentration" value="act" id="act" />
-                  <label for="act">д) Модельный региональный акт</label>
+                  <input type="radio" name="q1_act_type" value="act" id="q1_act" />
+                  <label for="q1_act">д) Модельный региональный акт</label>
                 </div>
               </fieldset>
             </div>
           </li>
-          <li class="quiz__list-el">
+          <li class="quiz__list-el" data-question="2">
             <p class="quiz__list-el-header">2. Укажите цель разработки (внесения изменений) в НПА (опишите проблему, на решение которой направлена разработка НПА)</p>
             <div class="quiz__list-el-body">
-              <textarea class="quiz__list-el-body-textarea" name="textarea"></textarea>
+              <textarea class="quiz__list-el-body-textarea" name="q2_development_goal" id="q2_development_goal"></textarea>
             </div>
           </li>
-          <li class="quiz__list-el">
-            <p class="quiz__list-el-header">3. Укажите, как именно действующее
-              правовое регулирование (либо отсутствие такого регулирования)
-              мешает реализации функций и полномочий Фонда</p>
+          <li class="quiz__list-el" data-question="3">
+            <p class="quiz__list-el-header">3. Укажите, как именно действующее правовое регулирование (либо отсутствие такого регулирования) мешает реализации функций и полномочий Фонда</p>
             <div class="quiz__list-el-body">
-              <textarea class="quiz__list-el-body-textarea" name="textarea"></textarea>
+              <textarea class="quiz__list-el-body-textarea" name="q3_regulation_impact" id="q3_regulation_impact"></textarea>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="4">
+            <p class="quiz__list-el-header">4. Основание для разработки НПА</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q4_basis" value="initiative" id="q4_initiative" />
+                  <label for="q4_initiative">а) Инициатива Фонда</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q4_basis" value="ministry_order" id="q4_ministry_order" data-subquestion="q4_1_file_upload" />
+                  <label for="q4_ministry_order">б) Поручение Минстроя или иного ФОИВ</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q4_basis" value="sip_order" id="q4_sip_order" data-subquestion="q4_1_file_upload" />
+                  <label for="q4_sip_order">в) Поручение РГ СИП</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q4_basis" value="other" id="q4_other" data-subquestion="q4_1_other" />
+                  <label for="q4_other">г) Иное</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопрос 4.1 для вариантов "б" и "в" (общий для загрузки файлов) -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_1_file_upload">
+                <li class="quiz__list-el" data-question="4.1">
+                  <p class="quiz__list-el-header">4.1. Приложите соответствующее поручение</p>
+                  <div class="quiz__list-el-body">
+                    <div class="quiz__list-el-body-wrapper">
+                      <input type="file" class="visually-hidden quiz__list-el-body-input" name="q4_1_files[]" id="q4_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
+                      <label for="q4_1_file_upload" class="quiz__list-el-body-input-label">
+                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src="/img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
+                        <span class="input__file-button-text">Загрузить</span>
+                      </label>
+                      <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
+                    </div>
+                    <div class="file-upload-preview" id="q4_1_file_preview"></div>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- Подвопрос 4.1 для варианта "г" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_1_other">
+                <li class="quiz__list-el" data-question="4.1">
+                  <p class="quiz__list-el-header">4.1. Укажите основания для разработки</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q4_1_other_details" id="q4_1_other_textarea"></textarea>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="5">
+            <p class="quiz__list-el-header">5. Необходимо принять новый НПА с отдельным регулированием или внести изменения в действующие НПА?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q5_npa_action" value="new_act" id="q5_new_act" data-subquestion="q5_1_new_act" />
+                  <label for="q5_new_act">а) Принять новый акт</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q5_npa_action" value="new_and_amend" id="q5_new_and_amend" data-subquestion="q5_1_new_and_amend" />
+                  <label for="q5_new_and_amend">б) Принять новый акт и внести изменения в отдельные НПА и (или) признать утратившими силу отдельные НПА</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q5_npa_action" value="amend" id="q5_amend" data-subquestion="q5_1_amend" />
+                  <label for="q5_amend">в) Внести изменения</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопросы 5.1 и 5.2 для вариантов "а" и "б" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q5_1_new_act q5_1_new_and_amend">
+                <li class="quiz__list-el" data-question="5.1">
+                  <p class="quiz__list-el-header">5.1 Приложите схему бизнес-процесса (изменения в действующую схему бизнес-процесса)</p>
+                  <p class="quiz__list-el-comment">Приложение схемы является обязательным действием, без исполнения которого закрыт переход к следующему вопросу.</p>
+                  <div class="quiz__list-el-body">
+                    <div class="quiz__list-el-body-wrapper">
+                      <input type="file" class="visually-hidden quiz__list-el-body-input" name="q5_1_files[]" id="q5_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
+                      <label for="q5_1_file_upload" class="quiz__list-el-body-input-label">
+                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src="/img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
+                        <span class="input__file-button-text">Загрузить</span>
+                      </label>
+                      <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
+                    </div>
+                    <div class="file-upload-preview" id="q5_1_file_preview"></div>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="5.2">
+                  <p class="quiz__list-el-header">5.2 В свободной форме опишите, какие изменения предлагается внести</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q5_2_changes_description" id="q5_2_changes_description"></textarea>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- Подвопросы 5.1 и 5.2 для варианта "в" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q5_1_amend">
+                <li class="quiz__list-el" data-question="5.1">
+                  <p class="quiz__list-el-header">5.1 В какой (какие) НПА требуется внести изменения?</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q5_1_npa_list" id="q5_1_npa_list"></textarea>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="5.2">
+                  <p class="quiz__list-el-header">5.2 Какие изменения необходимо внести?</p>
+                  <div class="quiz__list-el-body">
+                    <fieldset class="quiz__fieldset">
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q5_2_change_type" value="minor" id="q5_2_minor" data-subquestion="q5_2_1_minor" />
+                        <label for="q5_2_minor">а) «точечные» поправки без изменения бизнес-процессов</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q5_2_change_type" value="major" id="q5_2_major" data-subquestion="q5_2_1_major" />
+                        <label for="q5_2_major">б) изменение или создание новых бизнес-процессов</label>
+                      </div>
+                    </fieldset>
+                    <!-- Подвопросы 5.2.1 для варианта "а" внутри 5.2 -->
+                    <ul class="quiz__list quiz__subquestions" data-subquestion-id="q5_2_1_minor">
+                      <li class="quiz__list-el" data-question="5.2.1">
+                        <p class="quiz__list-el-header">5.2.1 В свободной форме подробно опишите объем необходимых изменений в НПА.</p>
+                        <div class="quiz__list-el-body">
+                          <textarea class="quiz__list-el-body-textarea" name="q5_2_1_minor_details" id="q5_2_1_minor_details"></textarea>
+                        </div>
+                      </li>
+                    </ul>
+                    <!-- Подвопросы 5.2.1 и 5.2.2 для варианта "б" внутри 5.2 -->
+                    <ul class="quiz__list quiz__subquestions" data-subquestion-id="q5_2_1_major">
+                      <li class="quiz__list-el" data-question="5.2.1">
+                        <p class="quiz__list-el-header">5.2.1 Приложите схему бизнес-процесса (изменения в действующую схему бизнес-процесса)</p>
+                        <p class="quiz__list-el-comment">Приложение схемы является обязательным действием, без исполнения которого закрыт переход к следующему вопросу.</p>
+                        <div class="quiz__list-el-body">
+                          <div class="quiz__list-el-body-wrapper">
+                            <input type="file" class="visually-hidden quiz__list-el-body-input" name="q5_2_1_files[]" id="q5_2_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
+                            <label for="q5_2_1_file_upload" class="quiz__list-el-body-input-label">
+                              <span class="input__file-icon-wrapper"><img class="input__file-icon" src="/img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
+                              <span class="input__file-button-text">Загрузить</span>
+                            </label>
+                            <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
+                          </div>
+                          <div class="file-upload-preview" id="q5_2_1_file_preview"></div>
+                        </div>
+                      </li>
+                      <li class="quiz__list-el" data-question="5.2.2">
+                        <p class="quiz__list-el-header">5.2.2 В свободной форме опишите, какие изменения предлагается внести</p>
+                        <div class="quiz__list-el-body">
+                          <textarea class="quiz__list-el-body-textarea" name="q5_2_2_changes_description" id="q5_2_2_changes_description"></textarea>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="6">
+            <p class="quiz__list-el-header">6. Принятие акта повлияет на расходы или доходы бюджетов бюджетной системы РФ?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q6_budget_impact" value="yes" id="q6_yes" data-subquestion="q6_1_yes" />
+                  <label for="q6_yes">а) Да</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q6_budget_impact" value="no" id="q6_no" />
+                  <label for="q6_no">б) Нет</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопрос 6.1 для варианта "а" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q6_1_yes">
+                <li class="quiz__list-el" data-question="6.1">
+                  <p class="quiz__list-el-header">6.1 Приложите файл с финансово-экономическим обоснованием (в свободной форме), содержащим:</p>
+                  <ul class="quiz__list-el-header">
+                    <li>финансовый, экономический и (или) статистический анализ текущей ситуации;</li>
+                    <li>прогноз экономических и иных последствий реализации предлагаемых изменений (размер возникающих расходов или порядок их расчета);</li>
+                    <li>информацию об источнике финансирования дополнительных расходов бюджетов бюджетной системы РФ.</li>
+                  </ul>
+                  <div class="quiz__list-el-body">
+                    <div class="quiz__list-el-body-wrapper">
+                      <input type="file" class="visually-hidden quiz__list-el-body-input" name="q6_1_files[]" id="q6_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
+                      <label for="q6_1_file_upload" class="quiz__list-el-body-input-label">
+                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src="/img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
+                        <span class="input__file-button-text">Загрузить</span>
+                      </label>
+                      <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
+                    </div>
+                    <div class="file-upload-preview" id="q6_1_file_preview"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="7">
+            <p class="quiz__list-el-header">7. Принятие акта повлияет на расходы или доходы Фонда?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q7_fund_budget_impact" value="yes" id="q7_yes" data-subquestion="q7_1_yes" />
+                  <label for="q7_yes">а) Да</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q7_fund_budget_impact" value="no" id="q7_no" />
+                  <label for="q7_no">б) Нет</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопрос 7.1 для варианта "а" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q7_1_yes">
+                <li class="quiz__list-el" data-question="7.1">
+                  <p class="quiz__list-el-header">7.1 Приложите файл с описанием финансово-экономического эффекта от реализации предлагаемых изменений (в свободной форме), содержащий:</p>
+                  <ul class="quiz__list-el-header">
+                    <li>финансовый, экономический и (или) статистический анализ текущей ситуации;</li>
+                    <li>прогноз экономических и иных последствий реализации предлагаемых изменений (размер возникающих расходов или доходов либо порядок их расчета);</li>
+                    <li>информацию об источнике финансирования дополнительных расходов Фонда;</li>
+                    <li>информацию о предлагаемых направлениях расходования средств, полученных в виде доходов (например, на реализацию функций и полномочий Фонда на территории Воссоединенных субъектов РФ, на текущую деятельность, на иные направления).</li>
+                  </ul>
+                  <div class="quiz__list-el-body">
+                    <div class="quiz__list-el-body-wrapper">
+                      <input type="file" class="visually-hidden quiz__list-el-body-input" name="q7_1_files[]" id="q7_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
+                      <label for="q7_1_file_upload" class="quiz__list-el-body-input-label">
+                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src="/img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
+                        <span class="input__file-button-text">Загрузить</span>
+                      </label>
+                      <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
+                    </div>
+                    <div class="file-upload-preview" id="q7_1_file_preview"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="8">
+            <p class="quiz__list-el-header">8. Ожидаемый результат от
+              принятия проекта НПА (внесения изменений в НПА)</p>
+            <p class="quiz__list-el-comment">Указать конкретные ожидаемые результаты
+              от принятия проекта НПА (внесения изменений в НПА)
+              в свободной форме.</p>
+            <p class="quiz__list-el-comment">Например: появление правовых
+              оснований для осуществления Фондом функций и полномочий,
+              повышение эффективности реализации существующих функций
+              и полномочий Фонда, иное.</p>
+            <div class="quiz__list-el-body">
+              <textarea class="quiz__list-el-body-textarea" name="q8_expected_result" id="q8_expected_result"></textarea>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="9">
+            <p class="quiz__list-el-header">9. Разрабатываемый акт предусматривает предоставление денежных средств (субсидии) Фонду из федерального бюджета?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q9_subsidy_allocation" value="yes" id="q9_yes" data-subquestion="q9_1_yes" />
+                  <label for="q9_yes">а) Да</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q9_subsidy_allocation" value="no" id="q9_no" />
+                  <label for="q9_no">б) Нет</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопросы 9.1, 9.2, 9.3, 9.4 и 9.5 для варианта "а" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q9_1_yes">
+                <li class="quiz__list-el" data-question="9.1">
+                  <p class="quiz__list-el-header">9.1 Цель предоставления субсидии</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q9_1_purpose" id="q9_1_purpose"></textarea>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="9.2">
+                  <p class="quiz__list-el-header">9.2 Будет ли осуществляться реализация мероприятий, финансируемых за счет средств субсидии, в рамках федеральных проектов?</p>
+                  <div class="quiz__list-el-body">
+                    <fieldset class="quiz__fieldset">
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q9_2_federal_project" value="yes" id="q9_2_yes" data-subquestion="q9_2_1_yes" />
+                        <label for="q9_2_yes">а) Да</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q9_2_federal_project" value="no" id="q9_2_no" />
+                        <label for="q9_2_no">б) Нет</label>
+                      </div>
+                    </fieldset>
+                    <!-- Вложенный подвопрос 9.2.1 для варианта "а" в 9.2 -->
+                    <ul class="quiz__list quiz__subquestions" data-subquestion-id="q9_2_1_yes">
+                      <li class="quiz__list-el" data-question="9.2.1">
+                        <p class="quiz__list-el-header">Поставьте ссылку на конкретное мероприятие фед. проекта</p>
+                        <div class="quiz__list-el-body">
+                          <input type="text" class="quiz__list-el-body-input" name="q9_2_1_link" id="q9_2_1_link" />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="9.3">
+                  <p class="quiz__list-el-header">9.3 Перечень затрат, источником финансирования которых является субсидия</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q9_3_expenses" id="q9_3_expenses"></textarea>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="9.4">
+                  <p class="quiz__list-el-header">9.4 Результат предоставления субсидии</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q9_4_result" id="q9_4_result"></textarea>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="9.5">
+                  <p class="quiz__list-el-header">9.5 Иное, что необходимо учесть</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q9_5_additional" id="q9_5_additional"></textarea>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="10">
+            <p class="quiz__list-el-header">10. Акт предусматривает предоставление Фондом денежных средств третьим лицам (например, субъектам РФ, банкам, каким-либо организациям и т.д.)?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q10_fund_allocation" value="yes" id="q10_yes" data-subquestion="q10_1_yes" />
+                  <label for="q10_yes">а) Да</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q10_fund_allocation" value="no" id="q10_no" />
+                  <label for="q10_no">б) Нет</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопросы 10.1, 10.2, 10.3 и 10.4 для варианта "а" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q10_1_yes">
+                <li class="quiz__list-el" data-question="10.1">
+                  <p class="quiz__list-el-header">10.1 Цель предоставления денежных средств Фонда</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q10_1_purpose" id="q10_1_purpose"></textarea>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="10.2">
+                  <p class="quiz__list-el-header">10.2 Направления использования денежных средств Фонда</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q10_2_usage" id="q10_2_usage"></textarea>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="10.3">
+                  <p class="quiz__list-el-header">10.3 Результат предоставления денежных средств Фонда</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q10_3_outcome" id="q10_3_outcome"></textarea>
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="10.4">
+                  <p class="quiz__list-el-header">10.4 Иное, что необходимо учесть</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q10_4_additional" id="q10_4_additional"></textarea>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="11">
+            <p class="quiz__list-el-header">11. С какой даты НПА должен вступить в законную силу?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q11_effective_date" value="publication" id="q11_publication" />
+                  <label for="q11_publication">а) Со дня принятия (официального опубликования) НПА</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q11_effective_date" value="other_date" id="q11_other_date" data-subquestion="q11_1_other" />
+                  <label for="q11_other_date">б) С иной даты (события)</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопросы 11.1 и 11.2 для варианта "б" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q11_1_other">
+                <li class="quiz__list-el" data-question="11.1">
+                  <p class="quiz__list-el-header">11.1 Укажите, с какой именно даты должен вступать в силу НПА</p>
+                  <div class="quiz__list-el-body">
+                    <input type="date" id="q11_1_date" name="q11_1_date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="11.2">
+                  <p class="quiz__list-el-header">11.2 Укажите событие</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q11_2_event" id="q11_2_event"></textarea>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="12">
+            <p class="quiz__list-el-header">12. Есть ли необходимость распространить действие НПА на правоотношения, возникшие ранее?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q12_retroactive_application" value="yes" id="q12_yes" data-subquestion="q12_1_yes" />
+                  <label for="q12_yes">а) Да</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q12_retroactive_application" value="no" id="q12_no" />
+                  <label for="q12_no">б) Нет</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопросы 12.1 и 12.2 для варианта "а" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q12_1_yes">
+                <li class="quiz__list-el" data-question="12.1">
+                  <p class="quiz__list-el-header">12.1 Укажите дату правоотношений, возникших ранее</p>
+                  <div class="quiz__list-el-body">
+                    <input type="date" id="q12_1_date" name="q12_1_date" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                  </div>
+                </li>
+                <li class="quiz__list-el" data-question="12.2">
+                  <p class="quiz__list-el-header">12.2 Укажите мотивированное обоснование включения нормы о распространении на ранее возникшие правоотношения</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q12_2_justification" id="q12_2_justification"></textarea>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="13">
+            <p class="quiz__list-el-header">13. Укажите дополнительную информацию
+              (при необходимости)</p>
+            <p class="quiz__list-el-comment">Указывается информация в свободной форме.<br>
+              При заполнении указанного вопроса, в том числе целесообразно указать:</p>
+            <ul class="quiz__list-el-comment">
+              <li class="quiz__list-el-comment-li">какие по данному вопросу проводились внутренние и внешние совещания?</li>
+              <li class="quiz__list-el-comment-li">какие принимались решения (протоколы)?</li>
+              <li class="quiz__list-el-comment-li">осуществлялась ли по данному вопросу переписка с ФОИВ?</li>
+            </ul>
+            <div class="quiz__list-el-body">
+              <textarea class="quiz__list-el-body-textarea" name="q13_additional_info" id="q13_additional_info"></textarea>
+            </div>
+          </li>
+          <li class="quiz__list-el" data-question="14">
+            <p class="quiz__list-el-header">14. Требуется ли согласование проекта НПА с другими подразделениями Фонда?</p>
+            <div class="quiz__list-el-body">
+              <fieldset class="quiz__fieldset">
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q14_coordination_required" value="yes" id="q14_yes" data-subquestion="q14_1_yes" />
+                  <label for="q14_yes">а) Да</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q14_coordination_required" value="no" id="q14_no" />
+                  <label for="q14_no">б) Нет</label>
+                </div>
+              </fieldset>
+
+              <!-- Подвопрос 14.1 для варианта "а" -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q14_1_yes">
+                <li class="quiz__list-el" data-question="14.1">
+                  <p class="quiz__list-el-header">14.1 Укажите подразделения Фонда, с которыми будет необходимо согласовать проект НПА</p>
+                  <div class="quiz__list-el-body">
+                    <textarea class="quiz__list-el-body-textarea" name="q14_1_departments" id="q14_1_departments"></textarea>
+                  </div>
+                </li>
+              </ul>
             </div>
           </li>
         </ul>
