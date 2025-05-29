@@ -349,6 +349,10 @@ body {
   left: 0;
 }
 
+.quiz__list-el[data-question="9.5"]::before, .quiz__list-el[data-question="10.4"]::before, .quiz__list-el[data-question="13"]::before {
+  content: "";
+}
+
 .quiz__list-el-header {
   color: rgba(0,0,0,.85);
   font-size: 16px;
