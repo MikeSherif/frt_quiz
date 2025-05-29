@@ -238,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.style.color = 'red';
         errorMessage.textContent = 'Пожалуйста, загрузите файл.';
         questionEl.appendChild(errorMessage);
+        fileInput.addEventListener('change', (e) => {
+          questionEl.removeChild(errorMessage);
+        })
       }
     });
 
