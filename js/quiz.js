@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Проверяем текстовые поля и даты
     document.querySelectorAll('.quiz__list-el-body textarea:not([disabled]), .quiz__list-el-body input[type="text"]:not([disabled]), .quiz__list-el-body input[type="date"]:not([disabled])').forEach(field => {
-      if (!field.value.trim()) {
+      if (!field.value.trim() && field.name !== "q9_5_additional" && field.name !== "q10_4_additional" && field.name !== "q13_additional_info") {
         isValid = false;
         const questionEl = field.closest('.quiz__list-el');
         const errorMessage = document.createElement('p');

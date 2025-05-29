@@ -150,47 +150,135 @@
             <div class="quiz__list-el-body">
               <fieldset class="quiz__fieldset">
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="q4_basis" value="initiative" id="q4_initiative" data-subquestion="empty"/>
-                  <label for="q4_initiative">а) Инициатива Фонда</label>
+                  <input type="radio" name="q4_type" value="law" id="q4_law" data-subquestion="q4_1" />
+                  <label for="q4_law">а) Закон</label>
                 </div>
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="q4_basis" value="ministry_order" id="q4_ministry_order" data-subquestion="q4_1_file_upload" />
-                  <label for="q4_ministry_order">б) Поручение Минстроя или иного ФОИВ</label>
+                  <input type="radio" name="q4_type" value="resolution" id="q4_resolution" data-subquestion="q4_1" />
+                  <label for="q4_resolution">б) Постановление Правительства РФ</label>
                 </div>
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="q4_basis" value="sip_order" id="q4_sip_order" data-subquestion="q4_1_file_upload" />
-                  <label for="q4_sip_order">в) Поручение РГ СИП</label>
+                  <input type="radio" name="q4_type" value="directive" id="q4_directive" data-subquestion="q4_1" />
+                  <label for="q4_directive">в) Распоряжение Правительства РФ</label>
                 </div>
                 <div class="quiz__fieldset-item">
-                  <input type="radio" name="q4_basis" value="other" id="q4_other" data-subquestion="q4_1_other" />
-                  <label for="q4_other">г) Иное</label>
+                  <input type="radio" name="q4_type" value="order" id="q4_order" data-subquestion="q4_1" />
+                  <label for="q4_order">г) Приказ ФОИВ</label>
+                </div>
+                <div class="quiz__fieldset-item">
+                  <input type="radio" name="q4_type" value="model_act" id="q4_model_act" data-subquestion="q4_2" />
+                  <label for="q4_model_act">д) Модельный региональный акт</label>
                 </div>
               </fieldset>
 
-              <!-- Подвопрос 4.1 для вариантов "б" и "в" (общий для загрузки файлов) -->
-              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_1_file_upload">
+              <!-- Подвопрос 4.1 для вариантов а), б), в), г) -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_1">
                 <li class="quiz__list-el" data-question="4.1">
-                  <p class="quiz__list-el-header">4.1. Приложите соответствующее поручение</p>
+                  <p class="quiz__list-el-header">4.1 Основание для разработки</p>
                   <div class="quiz__list-el-body">
-                    <div class="quiz__list-el-body-wrapper">
-                      <input type="file" class="visually-hidden quiz__list-el-body-input" name="q4_1_files[]" id="q4_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
-                      <label for="q4_1_file_upload" class="quiz__list-el-body-input-label">
-                        <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
-                        <span class="input__file-button-text">Загрузить</span>
-                      </label>
-                      <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
-                    </div>
-                    <div class="file-upload-preview" id="q4_1_file_preview"></div>
+                    <fieldset class="quiz__fieldset">
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_1_basis" value="fund_initiative" id="q4_1_fund_initiative" data-subquestion="empty" />
+                        <label for="q4_1_fund_initiative">а) Инициатива Фонда</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_1_basis" value="gov_order" id="q4_1_gov_order" data-subquestion="q4_1_1_file_upload" />
+                        <label for="q4_1_gov_order">б) Поручение Президента РФ, Председателя или Заместителя Председателя Правительства РФ</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_1_basis" value="ministry_order" id="q4_1_ministry_order" data-subquestion="q4_1_1_file_upload" />
+                        <label for="q4_1_ministry_order">в) Поручение Минстроя или иного ФОИВ</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_1_basis" value="other" id="q4_1_other" data-subquestion="q4_1_1_other" />
+                        <label for="q4_1_other">г) Иное</label>
+                      </div>
+                    </fieldset>
+
+                    <!-- Подвопрос 4.1.1 для вариантов "б" и "в" (загрузка файла) -->
+                    <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_1_1_file_upload">
+                      <li class="quiz__list-el" data-question="4.1.1">
+                        <p class="quiz__list-el-header">4.1.1 Приложите соответствующее поручение</p>
+                        <p class="quiz__list-el-comment">Приложение документа является обязательным действием, без исполнения которого закрыт переход к следующему вопросу.</p>
+                        <div class="quiz__list-el-body">
+                          <div class="quiz__list-el-body-wrapper">
+                            <input type="file" class="visually-hidden quiz__list-el-body-input" name="q4_1_1_files[]" id="q4_1_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
+                            <label for="q4_1_1_file_upload" class="quiz__list-el-body-input-label">
+                              <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
+                              <span class="input__file-button-text">Загрузить</span>
+                            </label>
+                            <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
+                          </div>
+                          <div class="file-upload-preview" id="q4_1_1_file_preview"></div>
+                        </div>
+                      </li>
+                    </ul>
+
+                    <!-- Подвопрос 4.1.1 для варианта "г" (текстовое поле) -->
+                    <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_1_1_other">
+                      <li class="quiz__list-el" data-question="4.1.1">
+                        <p class="quiz__list-el-header">4.1.1 Укажите основания для разработки</p>
+                        <div class="quiz__list-el-body">
+                          <textarea class="quiz__list-el-body-textarea" name="q4_1_1_other_details" id="q4_1_1_other_textarea"></textarea>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
                 </li>
               </ul>
 
-              <!-- Подвопрос 4.1 для варианта "г" -->
-              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_1_other">
-                <li class="quiz__list-el" data-question="4.1">
-                  <p class="quiz__list-el-header">4.1. Укажите основания для разработки</p>
+              <!-- Подвопрос 4.2 для варианта д) -->
+              <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_2">
+                <li class="quiz__list-el" data-question="4.2">
+                  <p class="quiz__list-el-header">4.2 Основание для разработки</p>
                   <div class="quiz__list-el-body">
-                    <textarea class="quiz__list-el-body-textarea" name="q4_1_other_details" id="q4_1_other_textarea"></textarea>
+                    <fieldset class="quiz__fieldset">
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_2_basis" value="fund_initiative" id="q4_2_fund_initiative" data-subquestion="empty" />
+                        <label for="q4_2_fund_initiative">а) Инициатива Фонда</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_2_basis" value="ministry_order" id="q4_2_ministry_order" data-subquestion="q4_2_1_file_upload" />
+                        <label for="q4_2_ministry_order">б) Поручение Минстроя или иного ФОИВ</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_2_basis" value="sip_order" id="q4_2_sip_order" data-subquestion="q4_2_1_file_upload" />
+                        <label for="q4_2_sip_order">в) Поручение РГ СИП</label>
+                      </div>
+                      <div class="quiz__fieldset-item">
+                        <input type="radio" name="q4_2_basis" value="other" id="q4_2_other" data-subquestion="q4_2_1_other" />
+                        <label for="q4_2_other">г) Иное</label>
+                      </div>
+                    </fieldset>
+
+                    <!-- Подвопрос 4.2.1 для вариантов "б" и "в" (загрузка файла) -->
+                    <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_2_1_file_upload">
+                      <li class="quiz__list-el" data-question="4.2.1">
+                        <p class="quiz__list-el-header">4.2.1 Приложите соответствующее поручение</p>
+                        <p class="quiz__list-el-comment">Приложение документа является обязательным действием, без исполнения которого закрыт переход к следующему вопросу.</p>
+                        <div class="quiz__list-el-body">
+                          <div class="quiz__list-el-body-wrapper">
+                            <input type="file" class="visually-hidden quiz__list-el-body-input" name="q4_2_1_files[]" id="q4_2_1_file_upload" multiple accept="*/*" data-max-files="20" data-max-size="20MB" />
+                            <label for="q4_2_1_file_upload" class="quiz__list-el-body-input-label">
+                              <span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/upload_icon.svg" alt="Выбрать файл" width="18"></span>
+                              <span class="input__file-button-text">Загрузить</span>
+                            </label>
+                            <p class="quiz__list-el-body-input-description">До 20 файлов, допустимый размер одного файла — 20 МБ.</p>
+                          </div>
+                          <div class="file-upload-preview" id="q4_2_1_file_preview"></div>
+                        </div>
+                      </li>
+                    </ul>
+
+                    <!-- Подвопрос 4.2.1 для варианта "г" (текстовое поле) -->
+                    <ul class="quiz__list quiz__subquestions" data-subquestion-id="q4_2_1_other">
+                      <li class="quiz__list-el" data-question="4.2.1">
+                        <p class="quiz__list-el-header">4.2.1 Укажите основания для разработки</p>
+                        <div class="quiz__list-el-body">
+                          <textarea class="quiz__list-el-body-textarea" name="q4_2_1_other_details" id="q4_2_1_other_textarea"></textarea>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
                 </li>
               </ul>
